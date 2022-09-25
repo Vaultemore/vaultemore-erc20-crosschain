@@ -1,6 +1,6 @@
 @aave/=lib/aave-v3-core/
 @ds=lib/ds-test/src/
-@std=lib/forge-std/src/
+@std=lib/forge-std/
 @solmate=lib/solmate/src/
 @clones=lib/clones-with-immutable-args/src/
 nxtp=lib/nxtp/packages/deployments/contracts/contracts/

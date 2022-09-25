@@ -5,7 +5,7 @@ import {XConsole} from "./Console.sol";
 
 import {ERC20} from "@solmate/tokens/ERC20.sol";
 
-import {Vm} from "@std/Vm.sol";
+import {Vm} from "@std/src/Vm.sol";
 import {Test} from "forge-std/Test.sol";
 
 contract DSTestPlus is Test {
@@ -14,8 +14,10 @@ contract DSTestPlus is Test {
   // Domain IDs for testnet
   uint32 public goerliDomainId = 1735353714;
   uint32 public optimismGoerliDomainId = 1735356532;
+  uint32 public mumbaiDomainId = 9991;
 
   // Chain IDs
   uint32 public goerliChainId = 5;
   uint32 public optimismGoerliChainId = 420;
+  uint32 public mumbaiChainId = 80001;
 }

@@ -347,7 +347,7 @@ contract ERC20CrossChainable is ICallback, ERC20, Ownable {
    */ 
   function faucet() external {
 
-    require(lastFaucetDate[msg.sender] > block.timestamp + lockTimeout, 'need to wait before next faucet');
+    require(lastFaucetDate[msg.sender] == 0 || lastFaucetDate[msg.sender] > block.timestamp + lockTimeout, 'need to wait before next faucet');
     require(balanceOf[address(this)] > 10e18, 'no more token available :(');
 
     this.transfer(msg.sender,10e17);

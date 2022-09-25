@@ -1,3 +1,24 @@
+# Vaultemore project
+We used the xapp starter proposed by Connext to quickstart a cross-chain project and modified it by adding an ERC20Crosschainable.sol contract.
+Further, you can find the documentation of that xapp-starter.
+
+Before that, here are the business logic rules of our project:
+- deploy a first token on a first chain, with the constructor parameter _isOriginMintChain to True, so tokens will be minted on that first chain.
+Using foundry:
+forge create --rpc-url RPC_URL --private-key PRIVATE_KEY ./src/contract-to-contract-interactions/with-calldata/ERC20CrossChainable.sol:ERC20CrossChainable --verify --etherscan-api-key ETHERSCAN_KEY --constructor-args CONNEXT_HANDLER_ADDRESS_ON_THAT_CHAIN PROMISE_ROUTER_ADDRESS_ON_THAT_CHAIN isOriginChain(true or false) CONNEXT_CHAIN_DOMAIN_ID "token_name" "token_SYMBOL"
+
+- then, for all other supported chains, deploy the token contract with _isOriginMintChain = false
+
+- the deployer has an Owner authority and can add or remove a supported chain. Function: addDomainToWhiteList and removeFromWhiteList
+
+- There is a timeout in case the Connext network is unavailable. A request initiator can unlock on both chain any pending request, after a timeout of 24 hours, to prevent him from abusing the system and instantly cancelling a request to get tokens duplicated on both chain. These functions are cancelBurnRequest and cancelMintRequest (to be called respectively on source and destination chains).
+
+- It is not possible to make a transfer to a destination chain when there is already a pending request on destination chain.
+
+- On the test chains only, there is a faucet function to get free tokens, limited to 0.1 per day
+
+
+
 # xapp-starter
 
 Starter kit for cross-domain apps (xApps).

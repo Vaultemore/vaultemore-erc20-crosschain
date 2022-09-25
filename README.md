@@ -17,6 +17,12 @@ forge create --rpc-url RPC_URL --private-key PRIVATE_KEY ./src/contract-to-contr
 
 - On the test chains only, there is a faucet function to get free tokens, limited to 0.1 per day
 
+contracts deployed:
+- Goerli Ethereum: 0x3418A64B763158C18eA17E01d266aB34CEB2a9DB
+- Mumbai polygon: 0x8AD53085c3b0519C785D1AFc9ae613981DB039aB
+- Goerli Optimism: 0x8AD53085c3b0519C785D1AFc9ae613981DB039aB (could not verify its code)
+If you want to test, use the faucet on Goerli Ethereum, and call xChainMint with the params:
+- 0.01 native tokens, 9991 for the connextDomainId of Mumbai Polygon, _amountToMint = 9991, _forceSlow = false
 
 
 # xapp-starter
